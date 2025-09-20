@@ -10,20 +10,21 @@ export const metadata: Metadata = {
   title: "訪問記録を編集",
 };
 
-interface EditRecordPageProps {
-  params: {
+interface ShopProps {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-export default async function Shop({ params }: EditRecordPageProps) {
+export default async function Shop({ params }: ShopProps) {
+  const id = (await params).id;
   const session = await verifySession();
   const userId = session.user.id;
 
   const [record] = await db
     .select()
     .from(records)
-    .where(and(eq(records.id, params.id), eq(records.userId, userId)));
+    .where(and(eq(records.id, id), eq(records.userId, userId)));
 
   if (!record) {
     notFound();

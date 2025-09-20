@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { CalendarDays, MapPin, MessageSquare, Star } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -10,9 +10,7 @@ export const metadata: Metadata = {
   title: "訪問記録 - 詳細",
 };
 
-export default async function Record({
-  params,
-}: PageProps<"/records/[id]">) {
+export default async function Record({ params }: PageProps<"/records/[id]">) {
   const recordId = (await params).id;
   const record = await getRecordById(recordId);
   const session = await verifySession();
@@ -43,7 +41,7 @@ export default async function Record({
           className={`h-5 w-5 ${
             i <= rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
           }`}
-        />
+        />,
       );
     }
     return stars;
@@ -81,7 +79,9 @@ export default async function Record({
               <CalendarDays className="h-5 w-5 text-muted-foreground" />
               <div>
                 <p className="text-sm text-muted-foreground">訪問日時</p>
-                <p className="text-lg font-medium">{formatDate(record.visitedAt)}</p>
+                <p className="text-lg font-medium">
+                  {formatDate(record.visitedAt)}
+                </p>
               </div>
             </div>
 
@@ -94,7 +94,9 @@ export default async function Record({
                     <div className="flex items-center gap-1">
                       {renderStars(record.rating)}
                     </div>
-                    <span className="text-lg font-medium">{record.rating}/5</span>
+                    <span className="text-lg font-medium">
+                      {record.rating}/5
+                    </span>
                   </div>
                 </div>
               </div>
@@ -123,7 +125,9 @@ export default async function Record({
               <h2 className="text-xl font-semibold">メモ</h2>
             </div>
             <div className="bg-muted/50 rounded-lg p-4">
-              <p className="whitespace-pre-wrap leading-relaxed">{record.notes}</p>
+              <p className="whitespace-pre-wrap leading-relaxed">
+                {record.notes}
+              </p>
             </div>
           </div>
         )}

@@ -7,13 +7,13 @@ export const metadata: Metadata = {
 };
 
 interface NewRecordPageProps {
-  searchParams: {
+  searchParams: Promise<{
     shopId?: string;
-  };
+  }>;
 }
 
 export default async function NewRecord({ searchParams }: NewRecordPageProps) {
-  const { shopId } = searchParams;
+  const { shopId } = await searchParams;
 
   if (!shopId) {
     redirect("/records");
