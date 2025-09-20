@@ -8,6 +8,13 @@
       "when": 1758140178396,
       "tag": "0000_vengeful_red_ghost",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1758367910334,
+      "tag": "0001_certain_penance",
+      "breakpoints": true
     }
   ]
 }
