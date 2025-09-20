@@ -15,6 +15,13 @@
       "when": 1758367910334,
       "tag": "0001_certain_penance",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1758371228426,
+      "tag": "0002_steep_swarm",
+      "breakpoints": true
     }
   ]
 }
