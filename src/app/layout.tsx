@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
+import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "Jiro Map",
+  title: {
+    default: "Jiro Map",
+    template: "%s | Jiro Map",
+  },
   description: "二郎ラーメンマップアプリ",
 };
 
@@ -22,7 +27,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Header />
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
