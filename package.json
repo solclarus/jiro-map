@@ -9,9 +9,9 @@
     "lint": "biome check",
     "format": "biome format --write",
     "better-auth:generate": "npx better-auth generate --output ./src/db/schemas/auth.ts",
-    "drizzle:generate": "npm drizzle-kit generate",
-    "drizzle:migrate": "npm drizzle-kit migrate",
-    "drizzle:gm": "npm drizzle-kit generate && npm drizzle-kit migrate",
+    "drizzle:generate": "npx drizzle-kit generate",
+    "drizzle:migrate": "npx drizzle-kit migrate",
+    "drizzle:gm": "npx drizzle-kit generate && npx drizzle-kit migrate",
     "seed": "npx tsx db/seed.ts"
   },
   "dependencies": {
