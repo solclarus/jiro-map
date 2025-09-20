@@ -1,6 +1,6 @@
 "use client";
 
-import { LogIn, User } from "lucide-react";
+import { LogIn, Logs, User } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
@@ -18,6 +18,12 @@ export function Header() {
           <span className="font-bold text-xl">Jiro Map</span>
         </Link>
         <nav className="flex items-center space-x-4">
+          <Button asChild variant="ghost">
+            <Link href="/records" className="flex items-center space-x-2">
+              <Logs className="size-4" />
+              <span>訪問記録</span>
+            </Link>
+          </Button>
           {session?.user ? (
             <Button asChild variant="outline">
               <Link href="/mypage" className="flex items-center space-x-2">
