@@ -6,30 +6,33 @@ import { db } from "@/db";
 import { records } from "@/db/schemas/record";
 import { verifySession } from "@/lib/session";
 import { recordFormSchema } from "@/schemas/record";
-import type { Record, RecordFormData } from "@/types/record";
+import type { RecordFormData } from "@/types/record";
 
-export async function createRecord(formData: RecordFormData) {
+export async function createRecord(formData: RecordFormData, shopId: string) {
   const data = recordFormSchema.parse(formData);
   const session = await verifySession();
   const userId = session.user.id;
 
   await db.insert(records).values({
     ...data,
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    shopId,
     userId,
   });
   revalidatePath("/records");
 }
 
-export async function updateRecord(id: string, formData: RecordFormData) {
+export async function updateRecord(
+  id: string,
+  formData: RecordFormData,
+  shopId: string,
+) {
   const data = recordFormSchema.parse(formData);
   const session = await verifySession();
   const userId = session.user.id;
 
   await db
     .update(records)
-    .set({ ...data, updatedAt: new Date(), userId })
+    .set({ ...data, shopId, updatedAt: new Date() })
     .where(and(eq(records.id, id), eq(records.userId, userId)));
   revalidatePath("/records");
 }
